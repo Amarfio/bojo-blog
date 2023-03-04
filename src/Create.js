@@ -56,6 +56,7 @@ const Create = () => {
                     <option>select author </option>
                     <option value="mario">Mario</option>
                     <option value="yoshi">Yoshi</option>
+                    <option value="chatgpt">Chat GPT</option>
                 </select>
 
                 {!isPending && <button type="submit">Add blog</button>}
