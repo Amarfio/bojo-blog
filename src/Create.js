@@ -1,17 +1,34 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const Create = () => {
     
     // code to get form values
     const [title , setTitle] = useState('');
     const [body, setBody] = useState('');
-    const [author, setAuthor] = useState('mario');    
-    
+    const [author, setAuthor] = useState('mario');
+    const [isPending, setIsPending] = useState(false);    
+    const history = useHistory();
+
     const handleSubmit = (e)=> {
         e.preventDefault();
 
+        //code to collect new blog data and create an object from it.
         const blog = {title, body, author};
-        console.log(blog);
+        // console.log(blog);
+        setIsPending(true);
+
+        fetch('http://localhost:8000/blogs',{
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(blog)
+        }).then(()=>{
+            console.log('new blog added');
+            setIsPending(false);
+
+            //go to the home page
+            history.push('/');
+        })
     }
     return ( 
     
@@ -41,7 +58,8 @@ const Create = () => {
                     <option value="yoshi">Yoshi</option>
                 </select>
 
-                <button type="submit">Add blog</button>
+                {!isPending && <button type="submit">Add blog</button>}
+                {isPending && <button type="submit">Adding blog ...</button>}
             </form>    
     </div> 
     );

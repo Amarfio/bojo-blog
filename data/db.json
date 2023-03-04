@@ -17,6 +17,18 @@
       "body": "this is the content of the blog",
       "author": "Joshua Amarfio",
       "id": 3
+    },
+    {
+      "title": "the blog",
+      "body": "yeah blog",
+      "author": "mario",
+      "id": 4
+    },
+    {
+      "title": "The work history in usg",
+      "body": "this is the details of this blog",
+      "author": "yoshi",
+      "id": 5
     }
   ]
 }
